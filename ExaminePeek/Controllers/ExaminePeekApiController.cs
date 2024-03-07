@@ -9,7 +9,7 @@ namespace ExaminePeek.Controllers
 {
 	[ApiVersion("1.0")]
 	[ApiExplorerSettings(GroupName = "Examine Peek")]
-	public  class ExaminePeekApiController : ExaminePeekControllerBase
+	public class ExaminePeekApiController : ExaminePeekControllerBase
 	{
 		private readonly IExamineManager _examineManager;
 

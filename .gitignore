@@ -480,3 +480,4 @@ umbraco-package-schema.json
 
 # Media files
 /wwwroot/media/
+ExaminePeek/wwwroot/App_Plugins/ExaminePeek

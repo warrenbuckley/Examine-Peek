@@ -1,8 +1,0 @@
-{
-    "$schema": "../../ExaminePeek.Website/umbraco-package-schema.json",
-    "id": "ExaminePeek",
-    "name": "Examine Peek",
-    "allowPackageTelemetry": true,
-    "version": "1.0.0",
-    "extensions": [],
-}

@@ -1,0 +1,15 @@
+{
+    "$schema": "../../ExaminePeek.Website/umbraco-package-schema.json",
+    "id": "ExaminePeek",
+    "name": "Examine Peek",
+    "allowPackageTelemetry": true,
+    "version": "1.0.0",
+    "extensions": [
+        {
+          "name": "Examine Peek EntryPoint",
+          "alias": "examine.peek.entrypoint",
+          "type": "entryPoint",
+          "js": "/app_plugins/ExaminePeek/examine-peek.js"
+        }
+      ]
+}

@@ -1,0 +1,124 @@
+﻿import { customElement, html, state } from "@umbraco-cms/backoffice/external/lit";
+import { UmbModalBaseElement } from "@umbraco-cms/backoffice/modal";
+import { tryExecuteAndNotify } from '@umbraco-cms/backoffice/resources';
+
+import { TemplateResult, css } from "lit";
+
+import { ExaminePeekModalData, ExaminePeekModalValue } from "./examinepeek.modal.token.ts";
+import { ExaminePeekResource, ISearchResult } from "../api";
+import { UUIButtonElement } from "@umbraco-cms/backoffice/external/uui";
+
+@customElement('examine-peek-modal')
+export class ExaminePeekmModalElement extends UmbModalBaseElement<ExaminePeekModalData, ExaminePeekModalValue>
+{
+    constructor() {
+        super();
+    }
+
+    async connectedCallback() {
+        super.connectedCallback();
+
+        if(this.data?.entityKey){
+            // Use Swagger API client to get the record
+            await this._getExamineRecord(this.data.entityKey).then((record) => {
+                this.examineRecord = record;
+            });
+        }
+        else {
+            // This is a problem
+            console.error("Examine Peek Modal connectedCallback. There is NO EntityKey passed into the modal");
+        }
+    }
+
+    @state()
+    examineRecord : ISearchResult | undefined;
+    
+    @state()
+    hasLoadedRecord : boolean = false;
+    
+    private handleClose() {
+        this.modalContext?.reject();
+    }
+    
+    private async _getExamineRecord(key: string) : Promise<ISearchResult | undefined> {
+        const { data, error } = await tryExecuteAndNotify(this, ExaminePeekResource.getUmbracoExaminepeekApiV1Record({key: key}))
+        if (error){
+            console.error(error);
+            return undefined;
+        }
+        
+        this.hasLoadedRecord = true;
+        return data;
+    }
+    
+    private _copyValue(e: Event) {
+        // the e.target may or may not be UUIButtonElement
+        // it could be the nested uui-icon item
+        var target = e.target as HTMLElement; // Could be <uui-button> or <uui-icon> nested inside the button
+        
+        console.log('target', target);
+        console.log('target.parentElement', target.parentElement);
+        
+        
+        let button = e.target as UUIButtonElement;        
+        console.log('button is', button);
+        
+        // set uui-button state to "loading"
+        button.state = "success";
+    };
+    
+    render() {
+
+        let listItems: TemplateResult[] = [];
+
+        // Convert the record to an array of entries, sort them by key, then iterate over them
+        Object.entries(this.examineRecord?.values ?? {})
+            .forEach(([key, value]) => {
+                listItems.push(html`
+                    <umb-property-layout label="${key}">                      
+                        <div id="editor" slot="editor">
+                            <code>${value}</code>                            
+                        </div>
+                        <uui-button slot="action-menu" label="copy" look="secondary" color="default" @click="${this._copyValue}" compact>
+                            <uui-icon name="copy"></uui-icon>
+                        </uui-button>
+                        
+                    </umb-property-layout>
+                `);
+        });
+        
+        return html`
+            <umb-body-layout headline="Examine Peek">
+                
+                <uui-box headline="Data">
+                    ${listItems}
+                </uui-box>
+                
+                <div slot="actions">
+                    <uui-button id="close" label="Close" @click="${this.handleClose}">Close</uui-button>
+                </div>
+            </umb-body-layout>
+        `;
+    }
+    
+    static styles = css`
+        uui-box {
+            margin-bottom: 1rem;
+        }
+
+        umb-property-layout {
+            padding-top:0;
+            padding-bottom:0;
+        }
+
+        umb-property-layout uui-button {
+            opacity: 0;
+        }
+
+        umb-property-layout:hover uui-button {
+            opacity: 1;
+        }
+    `;
+}
+
+export default ExaminePeekmModalElement;

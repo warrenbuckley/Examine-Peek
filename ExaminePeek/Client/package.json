@@ -1,0 +1,20 @@
+{
+    "name": "examinepeek",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "build": "tsc && vite build",
+        "watch": "vite build --watch",
+        "generate-api": "openapi --input http://localhost:57005/umbraco/swagger/ExaminePeek/swagger.json --output src/api --useOptions --postfixServices Resource"
+    },
+    "dependencies": {
+        "lit": "^3.1.2"
+    },
+    "devDependencies": {
+        "@umbraco-cms/backoffice": "^14.0.0-beta001",
+        "openapi-typescript-codegen": "^0.27.0",
+        "typescript": "^5.2.2",
+        "vite": "^5.1.4"
+    }
+}

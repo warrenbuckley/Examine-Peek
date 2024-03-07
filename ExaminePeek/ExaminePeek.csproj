@@ -3,10 +3,10 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<StaticWebAssetBasePath>App_Plugins/ExaminePeek</StaticWebAssetBasePath>
 	</PropertyGroup>
 
 	<PropertyGroup>
+		<StaticWebAssetBasePath>/</StaticWebAssetBasePath>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
 
