@@ -1,22 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <StaticWebAssetBasePath>App_Plugins/ExaminePeek</StaticWebAssetBasePath>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<StaticWebAssetBasePath>App_Plugins/ExaminePeek</StaticWebAssetBasePath>
+	</PropertyGroup>
 
-  <PropertyGroup>
-    <PackageId>ExaminePeek</PackageId>
-    <Product>ExaminePeek</Product>
-    <Title>ExaminePeek</Title>
-    <Description>...</Description>
-    <PackageTags>umbraco plugin package</PackageTags>
-  </PropertyGroup>
+	<PropertyGroup>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Umbraco.Cms.Api.Common" Version="14.0.0-beta001" />
+		<PackageReference Include="Umbraco.Cms.Api.Management" Version="14.0.0-beta001" />
+		<PackageReference Include="Umbraco.Cms.Web.Website" Version="14.0.0-beta001" />
+	</ItemGroup>
 
 
-  <ItemGroup>
-    <PackageReference Include="Umbraco.Cms.Web.Website" Version="14.0.0-beta001" />
-    <PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="14.0.0-beta001" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="Client\" />
+	</ItemGroup>
 </Project>
