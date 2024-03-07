@@ -15,8 +15,10 @@ export const onInit: UmbEntryPointOnInit = (_host, extensionRegistry) => {
 
     // Do the OAuth token handshake stuff
     _host.consumeContext(UMB_AUTH_CONTEXT, (authContext) => {
-        const config = authContext.getOpenApiConfiguration()
+        const config = authContext.getOpenApiConfiguration();
+
         console.log('OpenAPI Configuration', config);
+
         OpenAPI.BASE = config.base;
         OpenAPI.WITH_CREDENTIALS = config.withCredentials;
         OpenAPI.CREDENTIALS = config.credentials;

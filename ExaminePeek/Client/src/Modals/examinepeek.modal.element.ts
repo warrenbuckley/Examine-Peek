@@ -15,12 +15,12 @@ export class ExaminePeekmModalElement extends UmbModalBaseElement<ExaminePeekMod
         super();
     }
 
-    async connectedCallback() {
+    connectedCallback() {
         super.connectedCallback();
 
         if(this.data?.entityKey){
             // Use Swagger API client to get the record
-            await this._getExamineRecord(this.data.entityKey).then((record) => {
+            this._getExamineRecord(this.data.entityKey).then((record) => {
                 this.examineRecord = record;
             });
         }
@@ -51,20 +51,30 @@ export class ExaminePeekmModalElement extends UmbModalBaseElement<ExaminePeekMod
         return data;
     }
     
-    private _copyValue(e: Event) {
+    private async _copyValue(e: Event, textToCopy: string) {
         // the e.target may or may not be UUIButtonElement
         // it could be the nested uui-icon item
         var target = e.target as HTMLElement; // Could be <uui-button> or <uui-icon> nested inside the button
+        let button: UUIButtonElement | undefined = undefined;
+
+        if (target instanceof UUIButtonElement) {
+            button = target;
+        } else if (target.parentElement instanceof UUIButtonElement) {
+            button = target.parentElement;
+        }
+
         
-        console.log('target', target);
-        console.log('target.parentElement', target.parentElement);
-        
-        
-        let button = e.target as UUIButtonElement;        
-        console.log('button is', button);
-        
-        // set uui-button state to "loading"
-        button.state = "success";
+
+        //const text = this.textContent;
+        const text = textToCopy;
+		if (text) {
+			await navigator.clipboard.writeText(text);
+			
+            // Check if button is defined before setting the state
+            if (button) {
+                button.state = "success";
+            }
+		}
     };
     
     render() {
@@ -79,7 +89,7 @@ export class ExaminePeekmModalElement extends UmbModalBaseElement<ExaminePeekMod
                         <div id="editor" slot="editor">
                             <code>${value}</code>                            
                         </div>
-                        <uui-button slot="action-menu" label="copy" look="secondary" color="default" @click="${this._copyValue}" compact>
+                        <uui-button slot="action-menu" label="copy" look="secondary" color="default" @click="${(e: Event) => this._copyValue(e, value)}" compact>
                             <uui-icon name="copy"></uui-icon>
                         </uui-button>
                         

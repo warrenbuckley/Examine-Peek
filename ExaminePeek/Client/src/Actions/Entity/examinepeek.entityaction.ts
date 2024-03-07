@@ -20,9 +20,9 @@ export class ExaminePeekEntityAction extends UmbEntityActionBase<any> {
     }
 
     async execute() {
-        if (!this.args.unique) throw new Error('The document unique identifier is missing');
-
-        console.log('Entity args unique is Y NO WORK', this.args.unique);
+        if (!this.args.unique){
+            throw new Error('The document unique identifier is missing');
+        }
 
         // The modal does NOT return any data when closed (it does not submit)
         this.#modalManagerContext?.open(this, EXAMINE_PEEK_MODAL, {
@@ -31,5 +31,4 @@ export class ExaminePeekEntityAction extends UmbEntityActionBase<any> {
             }
         });
     }
-
 }
