@@ -6,7 +6,7 @@
 > `dotnet nuget add source "https://www.myget.org/F/umbracoprereleases/api/v3/index.json" -n "Umbraco Prereleases"`
 
 ## What is Examine Peek ?
-It is a simple package to help view a specific Umbraco content node and see its stored values in the Umbraco External index and was a good first use case of learning how to build a simple Umbraco package for V14.
+It is a simple package to help view a specific [Umbraco](https://docs.umbraco.com/) content node and see its stored values in the [Umbraco External Examine index](https://docs.umbraco.com/umbraco-cms/reference/searching/examine) and was a good first use case of learning how to build a simple Umbraco package for V14.
 
 ### Why?
 Well if you use Examine and are storing custom fields and values against your content node in the Umbraco External index, you may wish to quickly view and debug what is stored in the Examine index.
