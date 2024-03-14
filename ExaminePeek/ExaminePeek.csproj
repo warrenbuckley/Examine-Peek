@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>enable</Nullable>
@@ -9,15 +9,49 @@
 		<StaticWebAssetBasePath>/</StaticWebAssetBasePath>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
+	
+	<!-- Nuget properties -->
+	<PropertyGroup>
+		<Title>Examine Peek</Title>
+		<Authors>warrenbuckley</Authors>
+		<Company>Hack Make Do</Company>
+		<Description>An Umbraco V14 Property Action to view the entry stored inside Examine index</Description>
+		<PackageProjectUrl>https://github.com/warrenbuckley/Examine-Peek</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/warrenbuckley/Examine-Peek</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>umbraco-marketplace;umbraco;umbraco-v14;examine;</PackageTags>
+		<IncludeSymbols>True</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageIcon>ExaminePeek.Icon.png</PackageIcon>
+	</PropertyGroup>
 
+	<!-- Nuget references (Depends on stuff that is yet to be on Nuget and is only on MyGet feed) -->
 	<ItemGroup>
 		<PackageReference Include="Umbraco.Cms.Api.Common" Version="14.0.0-beta001" />
 		<PackageReference Include="Umbraco.Cms.Api.Management" Version="14.0.0-beta001" />
 		<PackageReference Include="Umbraco.Cms.Web.Website" Version="14.0.0-beta001" />
 	</ItemGroup>
 
-
+	
 	<ItemGroup>
-		<Folder Include="Client\" />
+		<!-- Dont include the client folder as part of packaging nuget build -->
+		<Content Remove="Client\**" />
+		
+		<!-- However make the -->
+		<None Include="Client\public\umbraco-package.json" Pack="false" />
 	</ItemGroup>
+
+	<!-- Files to be inlcuded as part of Nuget Package (Icon & Readme) -->
+	<ItemGroup>
+	  <None Include="..\.github\ExaminePeek.Icon.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	  <None Include="..\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
+	
 </Project>
