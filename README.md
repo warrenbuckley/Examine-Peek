@@ -14,3 +14,10 @@ This saves you browsing to the Settings -> Examine dashboard and performing a se
 
 ### How do I use it?
 After installation then all Umbraco content nodes will add a new `Context Action` on the right click of the tree or the actions menu.
+
+### Open API specification
+You can view the Open API definition at this URL `https://localhost:44365/umbraco/swagger/ExaminePeek/swagger.json`
+
+Alternatively you can browse the Open API definitions in your Umbraco site, including the `Examine Peek Package API` definition using the Swagger UI by visiting this url `https://localhost:44365/umbraco/swagger`
+
+This allows you to try out the API requests directly in the browser and see the responses, ideal for debugging or consuming the API in an alternative way
