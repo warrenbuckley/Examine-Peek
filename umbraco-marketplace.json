@@ -1,0 +1,17 @@
+{
+    "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
+    "Title": "Examine Peek",
+    "Category": "Developer Tools",
+    "Description": "A simple package to help view a specific Umbraco content node and see its stored values in the Umbraco External index.",
+    "LicenseTypes": [ "Free"],
+    "PackageType": "Package",
+    "AuthorDetails": {
+        "Name": "Warren Buckley",
+        "Url": "https://hackmakedo.com",
+        "Description": "Warren is a freelance Umbraco developer who loves to tinker and hack and is available for hire. He has been working with Umbraco since the days of the yahoo mailing list (aka way too long).",
+        "ImageUrl": "https://umbraco.com/media/50jeg3uq/warren.jpg",
+        "SyncContributorsFromRepository": true
+    },
+    "Tags": [ "Examine", "Search", "Lucene", "Indexing", "Debugging", "Developer Tools" ],
+    "IssueTrackerUrl": "https://github.com/warrenbuckley/Examine-Peek/issues"
+}
