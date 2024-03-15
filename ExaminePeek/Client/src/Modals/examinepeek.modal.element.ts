@@ -1,5 +1,5 @@
 ﻿import { customElement, html, state } from "@umbraco-cms/backoffice/external/lit";
-import { UmbModalBaseElement } from "@umbraco-cms/backoffice/modal";
+import { UmbModalBaseElement, UmbModalRejectReason } from "@umbraco-cms/backoffice/modal";
 import { tryExecuteAndNotify } from '@umbraco-cms/backoffice/resources';
 
 import { TemplateResult, css } from "lit";
@@ -37,7 +37,7 @@ export class ExaminePeekmModalElement extends UmbModalBaseElement<ExaminePeekMod
     hasLoadedRecord : boolean = false;
     
     private handleClose() {
-        this.modalContext?.reject();
+        this.modalContext?.reject({ type: "close" } as UmbModalRejectReason);
     }
     
     private async _getExamineRecord(key: string) : Promise<ISearchResult | undefined> {
