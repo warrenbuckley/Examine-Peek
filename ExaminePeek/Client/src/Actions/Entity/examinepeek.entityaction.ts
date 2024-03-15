@@ -30,7 +30,7 @@ export class ExaminePeekEntityAction extends UmbEntityActionBase<never> {
             }
         });
 
-        const result = await modal?.onSubmit().catch((_rejected) => {
+        await modal?.onSubmit().catch((_rejected) => {
             // User clicked close/cancel and no data was submitted
             console.log('rejected', _rejected)
             return;
