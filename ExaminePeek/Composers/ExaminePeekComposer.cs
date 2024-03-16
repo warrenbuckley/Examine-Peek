@@ -34,11 +34,15 @@ namespace ExaminePeek.Composers
 
 				// https://learn.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-8.0&tabs=visual-studio#xml-comments
 				var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-				opt.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
-
+				var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFilename);
+				if (File.Exists(xmlPath))
+				{
+					opt.IncludeXmlComments(xmlPath);
+				}
 			});
 		}
 
+		// PR: https://github.com/umbraco/Umbraco-CMS/pull/15699
 		public class MyBackOfficeSecurityRequirementsOperationFilter : BackOfficeSecurityRequirementsOperationFilterBase
 		{
 			protected override string ApiName => "ExaminePeek";

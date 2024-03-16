@@ -9,7 +9,7 @@
 		<StaticWebAssetBasePath>/</StaticWebAssetBasePath>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
-	
+
 	<!-- Nuget properties -->
 	<PropertyGroup>
 		<Title>Examine Peek</Title>
@@ -34,25 +34,31 @@
 		<PackageReference Include="Umbraco.Cms.Web.Website" Version="14.0.0-beta001" />
 	</ItemGroup>
 
-	
+
 	<ItemGroup>
 		<!-- Dont include the client folder as part of packaging nuget build -->
 		<Content Remove="Client\**" />
-		
-		<!-- However make the -->
+
+		<!-- However make the Umbraco-package.json not part of the nuget package but visible to the solution -->
 		<None Include="Client\public\umbraco-package.json" Pack="false" />
+
+		<!-- 
+		Run our custom MSBuild.targets in consuming project to ensure the ExaminePeek.Xml
+		documentation file for swagger is copied in right place 
+		-->
+		<None Include="ExaminePeek.targets" Pack="True" PackagePath="Build"/>
 	</ItemGroup>
 
 	<!-- Files to be inlcuded as part of Nuget Package (Icon & Readme) -->
 	<ItemGroup>
-	  <None Include="..\.github\ExaminePeek.Icon.png">
-	    <Pack>True</Pack>
-	    <PackagePath>\</PackagePath>
-	  </None>
-	  <None Include="..\README.md">
-	    <Pack>True</Pack>
-	    <PackagePath>\</PackagePath>
-	  </None>
+		<None Include="..\.github\ExaminePeek.Icon.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
 	</ItemGroup>
-	
+
 </Project>

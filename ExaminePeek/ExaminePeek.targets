@@ -1,0 +1,16 @@
+<Project>
+	
+	<!-- 
+	Suggested approach to copy XML documentation file in Nuget package for Swagger
+	https://stackoverflow.com/a/64006774 
+	-->
+	<Target Name="_ResolveCopyLocalNuGetPkgXmls" AfterTargets="ResolveReferences">
+		<ItemGroup>
+			<!-- Copy XML files from all PackageReferences to output dir -->
+			<ReferenceCopyLocalPaths 
+				Include="@(ReferenceCopyLocalPaths->'%(RootDir)%(Directory)%(Filename).xml')" 
+				Condition="'%(ReferenceCopyLocalPaths.NuGetPackageId)'!='' and Exists('%(RootDir)%(Directory)%(Filename).xml')" />
+		</ItemGroup>
+	</Target>
+	
+</Project>
