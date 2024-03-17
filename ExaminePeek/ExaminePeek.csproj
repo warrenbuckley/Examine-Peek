@@ -25,6 +25,7 @@
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageIcon>ExaminePeek.Icon.png</PackageIcon>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 	</PropertyGroup>
 
 	<!-- Nuget references (Depends on stuff that is yet to be on Nuget and is only on MyGet feed) -->
@@ -46,7 +47,7 @@
 		Run our custom MSBuild.targets in consuming project to ensure the ExaminePeek.Xml
 		documentation file for swagger is copied in right place 
 		-->
-		<None Include="ExaminePeek.targets" Pack="True" PackagePath="Build"/>
+		<None Include="ExaminePeek.targets" Pack="True" PackagePath="Build" />
 	</ItemGroup>
 
 	<!-- Files to be inlcuded as part of Nuget Package (Icon & Readme) -->
@@ -56,6 +57,10 @@
 			<PackagePath>\</PackagePath>
 		</None>
 		<None Include="..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\LICENSE">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
