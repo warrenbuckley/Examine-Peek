@@ -13,5 +13,11 @@
         "SyncContributorsFromRepository": true
     },
     "Tags": [ "Examine", "Search", "Lucene", "Indexing", "Debugging", "Developer Tools" ],
-    "IssueTrackerUrl": "https://github.com/warrenbuckley/Examine-Peek/issues"
+    "IssueTrackerUrl": "https://github.com/warrenbuckley/Examine-Peek/issues",
+    "Screenshots": [
+        {
+            "Caption": "Examine Peek for Umbraco V14+",
+            "ImageUrl": "https://raw.githubusercontent.com/warrenbuckley/Examine-Peek/main/.github/ExaminePeek.Screenshot.png"
+        }
+    ]
 }
