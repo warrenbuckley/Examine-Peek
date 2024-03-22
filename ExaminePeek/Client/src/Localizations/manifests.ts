@@ -8,7 +8,8 @@ const localizations: ManifestLocalization = {
         culture: "en-us",
         localizations : {
             "examinepeek": {
-                "modal-title": "Examine Peek"
+                "modal-title": "Examine Peek",
+                "entity-action": "Examine Peek"
             }
         }
     }
