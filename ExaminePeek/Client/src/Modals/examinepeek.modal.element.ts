@@ -98,7 +98,7 @@ export class ExaminePeekmModalElement extends UmbModalBaseElement<ExaminePeekMod
         });
         
         return html`
-            <umb-body-layout headline="Examine Peek">
+            <umb-body-layout headline="${this.localize.term('examinepeek_modal-title')}">
                 
                 <uui-box headline="Data">
                     ${listItems}
