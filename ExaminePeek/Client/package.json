@@ -15,6 +15,6 @@
         "@umbraco-cms/backoffice": "^14.0.0-beta002",
         "openapi-typescript-codegen": "^0.27.0",
         "typescript": "^5.4.2",
-        "vite": "^5.1.6"
+        "vite": "^5.1.7"
     }
 }
