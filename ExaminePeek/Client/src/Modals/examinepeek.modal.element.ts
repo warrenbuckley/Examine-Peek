@@ -5,7 +5,7 @@ import { tryExecuteAndNotify } from '@umbraco-cms/backoffice/resources';
 import { TemplateResult, css } from "lit";
 
 import { ExaminePeekModalData, ExaminePeekModalValue } from "./examinepeek.modal.token.ts";
-import { ExaminePeekResource, ISearchResult } from "../api";
+import { ExaminePeekService, ISearchResult } from "../Api/index.ts";
 import { UUIButtonElement } from "@umbraco-cms/backoffice/external/uui";
 
 @customElement('examine-peek-modal')
@@ -41,14 +41,14 @@ export class ExaminePeekmModalElement extends UmbModalBaseElement<ExaminePeekMod
     }
     
     private async _getExamineRecord(key: string) : Promise<ISearchResult | undefined> {
-        const { data, error } = await tryExecuteAndNotify(this, ExaminePeekResource.getUmbracoExaminepeekApiV1Record({key: key}))
+        const { data, error } = await tryExecuteAndNotify(this, ExaminePeekService.getUmbracoExaminepeekApiV1RecordByKey({key: key}))
         if (error){
             console.error(error);
             return undefined;
         }
         
         this.hasLoadedRecord = true;
-        return data;
+        return data as ISearchResult;
     }
     
     private async _copyValue(e: Event, textToCopy: string) {

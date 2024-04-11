@@ -6,14 +6,15 @@
     "scripts": {
         "build": "tsc && vite build",
         "watch": "vite build --watch",
-        "generate-api": "openapi --input http://localhost:57005/umbraco/swagger/ExaminePeek/swagger.json --output src/api --useOptions --postfixServices Resource"
+        "generate-api": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 openapi-ts --input https://localhost:44365/umbraco/swagger/ExaminePeek/swagger.json --output src/Api"
     },
     "dependencies": {
         "lit": "^3.1.2"
     },
     "devDependencies": {
+        "@hey-api/openapi-ts": "^0.38.0",
         "@umbraco-cms/backoffice": "^14.0.0-beta003",
-        "openapi-typescript-codegen": "^0.27.0",
+        "cross-env": "^7.0.3",
         "typescript": "^5.4.2",
         "vite": "^5.1.6"
     }
