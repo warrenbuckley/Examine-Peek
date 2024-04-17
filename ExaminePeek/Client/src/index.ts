@@ -3,7 +3,7 @@ import { manifests as entityActionManifests } from './Actions/Entity/manifests.t
 import { manifests as modalManifests } from './Modals/manifests.ts';
 import { manifests as localizationManifests } from './Localizations/manifests.ts';
 import { UMB_AUTH_CONTEXT } from '@umbraco-cms/backoffice/auth';
-import { OpenAPI } from "./Api/index.ts";
+import { OpenAPI } from "./api/index.ts";
 
 // load up the manifests here
 export const onInit: UmbEntryPointOnInit = (_host, extensionRegistry) => {

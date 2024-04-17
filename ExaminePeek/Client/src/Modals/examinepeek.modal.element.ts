@@ -5,7 +5,7 @@ import { tryExecuteAndNotify } from '@umbraco-cms/backoffice/resources';
 import { TemplateResult, css } from "lit";
 
 import { ExaminePeekModalData, ExaminePeekModalValue } from "./examinepeek.modal.token.ts";
-import { ExaminePeekService, ISearchResult } from "../Api/index.ts";
+import { ExaminePeekService, ISearchResult } from "../api/index.ts";
 import { UUIButtonElement } from "@umbraco-cms/backoffice/external/uui";
 
 @customElement('examine-peek-modal')
