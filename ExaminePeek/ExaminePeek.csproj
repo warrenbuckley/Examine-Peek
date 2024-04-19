@@ -43,11 +43,6 @@
 		<!-- However make the Umbraco-package.json not part of the nuget package but visible to the solution -->
 		<None Include="Client\public\umbraco-package.json" Pack="false" />
 
-		<!-- 
-		Run our custom MSBuild.targets in consuming project to ensure the ExaminePeek.Xml
-		documentation file for swagger is copied in right place 
-		-->
-		<None Include="ExaminePeek.targets" Pack="True" PackagePath="Build" />
 	</ItemGroup>
 
 	<!-- Files to be inlcuded as part of Nuget Package (Icon & Readme) -->
