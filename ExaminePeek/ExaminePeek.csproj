@@ -33,6 +33,7 @@
 		<PackageReference Include="Umbraco.Cms.Api.Common" Version="14.0.0-rc3" />
 		<PackageReference Include="Umbraco.Cms.Api.Management" Version="14.0.0-rc3" />
 		<PackageReference Include="Umbraco.Cms.Web.Website" Version="14.0.0-rc3" />
+		<PackageReference Include="Umbraco.Cms" Version="14.0.0-rc3" />
 	</ItemGroup>
 
 
