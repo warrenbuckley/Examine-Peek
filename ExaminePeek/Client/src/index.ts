@@ -2,6 +2,7 @@ import { UmbEntryPointOnInit } from '@umbraco-cms/backoffice/extension-api';
 import { manifests as entityActionManifests } from './Actions/Entity/manifests.ts';
 import { manifests as modalManifests } from './Modals/manifests.ts';
 import { manifests as localizationManifests } from './Localizations/manifests.ts';
+import { manifests as entityUserPermissionManifests } from './EntityUserPermissions/manifests.ts';
 import { UMB_AUTH_CONTEXT } from '@umbraco-cms/backoffice/auth';
 import { OpenAPI } from "./Api/index.ts";
 
@@ -12,8 +13,11 @@ export const onInit: UmbEntryPointOnInit = (_host, extensionRegistry) => {
     extensionRegistry.registerMany([
         ...entityActionManifests,
         ...modalManifests,
-        ...localizationManifests
+        ...localizationManifests,
+        ...entityUserPermissionManifests,
     ]);
+
+    console.log('wat');
 
     // Do the OAuth token handshake stuff
     _host.consumeContext(UMB_AUTH_CONTEXT, (authContext) => {
