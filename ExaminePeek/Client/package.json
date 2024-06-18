@@ -9,13 +9,13 @@
         "generate-api": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 openapi-ts --input https://localhost:44365/umbraco/swagger/ExaminePeek/swagger.json --output src/Api"
     },
     "dependencies": {
-        "lit": "^3.1.2"
+        "lit": "^3.1.4"
     },
     "devDependencies": {
-        "@hey-api/openapi-ts": "^0.38.0",
+        "@hey-api/openapi-ts": "^0.47.0",
         "@umbraco-cms/backoffice": "^14.0.0",
         "cross-env": "^7.0.3",
-        "typescript": "^5.4.2",
-        "vite": "^5.1.6"
+        "typescript": "^5.4.5",
+        "vite": "^5.3.1"
     }
 }
