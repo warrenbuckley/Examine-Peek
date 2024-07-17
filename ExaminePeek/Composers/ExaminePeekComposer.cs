@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using ExaminePeek.Authorization;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
@@ -40,6 +42,17 @@ namespace ExaminePeek.Composers
 					opt.IncludeXmlComments(xmlPath);
 				}
 			});
+			
+			// Auth handler for the Requirement 
+			builder.Services.AddSingleton<IAuthorizationHandler, MinimumAgeHandler>();
+			builder.Services.AddAuthorization(options =>
+			{
+				options.AddPolicy("AtLeast21", policy =>
+				{
+					policy.Requirements.Add(new MinimumAgeRequirement(21));
+				});
+			});
+			
 		}
 
 		// PR: https://github.com/umbraco/Umbraco-CMS/pull/15699

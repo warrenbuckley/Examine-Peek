@@ -8,7 +8,8 @@ namespace ExaminePeek.Controllers
 {
 	[ApiController]
 	[BackOfficeRoute("examinepeek/api/v{version:apiVersion}")]
-	[Authorize(Policy = AuthorizationPolicies.SectionAccessContent)]
+	//[Authorize(Policy = AuthorizationPolicies.SectionAccessContent)]
+	[Authorize(Policy = "AtLeast21")]
 	[MapToApi("ExaminePeek")]
 	public class ExaminePeekControllerBase : ControllerBase
 	{
