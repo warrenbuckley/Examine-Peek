@@ -30,7 +30,7 @@
 
 	<!-- Nuget references (Depends on stuff that is yet to be on Nuget and is only on MyGet feed) -->
 	<ItemGroup>
-		<PackageReference Include="Umbraco.Cms" Version="14.0.0" />
+		<PackageReference Include="Umbraco.Cms" Version="14.1.2" />
 	</ItemGroup>
 
 
