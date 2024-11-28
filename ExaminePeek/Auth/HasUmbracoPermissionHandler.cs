@@ -20,7 +20,6 @@ namespace ExaminePeek.Auth
 		protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, HasUmbracoPermissionRequirement requirement)
 		{
 			var umbracoUser = _authorizationHelper.GetUmbracoUser(context.User);
-			umbracoUser.
 			var permissions = umbracoUser.GetPermissions(Constants.System.RootString, _userService);
 			var hasPermission = permissions.Contains(requirement.Permission);
 
