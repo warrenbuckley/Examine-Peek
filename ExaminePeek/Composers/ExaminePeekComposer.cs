@@ -1,8 +1,13 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using ExaminePeek.Auth;
+using ExaminePeek.Extensions;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using OpenIddict.Validation.AspNetCore;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
 using Umbraco.Cms.Api.Management.OpenApi;
+using Umbraco.Cms.Api.Management.Security.Authorization.UserGroup;
 using Umbraco.Cms.Core.Composing;
 using Umbraco.Cms.Core.DependencyInjection;
 
@@ -39,6 +44,16 @@ namespace ExaminePeek.Composers
 				{
 					opt.IncludeXmlComments(xmlPath);
 				}
+			});
+
+			builder.Services.AddSingleton<IAuthorizationHandler, HasUmbracoPermissionHandler>();
+			builder.Services.Configure<AuthorizationOptions>(opt =>
+			{	
+				opt.AddPolicy("HasExaminePeekPermission", policyBuilder =>
+				{
+					policyBuilder.AuthenticationSchemes.Add(OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme);
+					policyBuilder.RequireUmbracoPermission("ExaminePeek.Enabled");
+				});
 			});
 		}
 
