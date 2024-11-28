@@ -13,7 +13,7 @@
     },
     "devDependencies": {
         "@hey-api/openapi-ts": "^0.47.0",
-        "@umbraco-cms/backoffice": "^14.0.0",
+        "@umbraco-cms/backoffice": "^15.0.0",
         "cross-env": "^7.0.3",
         "typescript": "^5.4.5",
         "vite": "^5.3.1"
