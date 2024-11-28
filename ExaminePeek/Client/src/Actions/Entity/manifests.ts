@@ -13,6 +13,12 @@ export const manifests: Array<UmbExtensionManifest> = [
             icon: "icon-sensor",
             label: "Examine Peek",
         },
-        forEntityTypes: [ UMB_DOCUMENT_ENTITY_TYPE ]
+        forEntityTypes: [ UMB_DOCUMENT_ENTITY_TYPE ],
+        conditions: [
+            {
+                alias: "Umb.Condition.UserPermission.Document",
+                allOf: ["ExaminePeek.Enabled"]
+            }
+        ]
     }
 ];
