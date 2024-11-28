@@ -3,7 +3,7 @@ import { defineConfig } from "vite";
 export default defineConfig({
     build: {
         lib: {
-            entry: "src/index.ts", // Entrypoint file (registers other manifests)
+            entry: "src/bundle.ts", // Bundle file (registers other manifests)
             formats: ["es"],
             fileName: "examine-peek",
         },
