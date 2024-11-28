@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
@@ -16,11 +16,11 @@
 		<Version>1.0.1</Version>
 		<Authors>warrenbuckley</Authors>
 		<Company>Hack Make Do</Company>
-		<Description>An Umbraco V14 Property Action to view the entry stored inside Examine index</Description>
+		<Description>An Umbraco Bellissima Property Action to view the entry stored inside Examine index</Description>
 		<PackageProjectUrl>https://github.com/warrenbuckley/Examine-Peek</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/warrenbuckley/Examine-Peek</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-		<PackageTags>umbraco-marketplace;umbraco;umbraco-v14;examine;</PackageTags>
+		<PackageTags>umbraco-marketplace;umbraco;umbraco-bellissima;examine;</PackageTags>
 		<IncludeSymbols>True</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
@@ -29,9 +29,6 @@
 	</PropertyGroup>
 
 	<!-- Nuget references (Depends on stuff that is yet to be on Nuget and is only on MyGet feed) -->
-	<ItemGroup>
-		<PackageReference Include="Umbraco.Cms" Version="14.0.0" />
-	</ItemGroup>
 
 
 	<ItemGroup>
@@ -62,6 +59,9 @@
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="Umbraco.Cms.Api.Management" Version="15.0.0" />
 	</ItemGroup>
 
 </Project>
