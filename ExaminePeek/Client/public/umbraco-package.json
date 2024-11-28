@@ -6,9 +6,9 @@
     "version": "1.0.0",
     "extensions": [
         {
-          "name": "Examine Peek EntryPoint",
-          "alias": "examine.peek.entrypoint",
-          "type": "entryPoint",
+          "name": "Examine Peek - Bundle",
+          "alias": "examinepeek.bundle",
+          "type": "bundle",
           "js": "/app_plugins/ExaminePeek/examine-peek.js"
         }
       ]
