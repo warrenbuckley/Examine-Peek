@@ -16,6 +16,6 @@
         "@umbraco-cms/backoffice": "^15.0.0",
         "cross-env": "^7.0.3",
         "typescript": "^5.4.5",
-        "vite": "^5.3.1"
+        "vite": "^5.3.6"
     }
 }
