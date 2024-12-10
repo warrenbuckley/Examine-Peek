@@ -83,6 +83,7 @@ export class ExaminePeekmModalElement extends UmbModalBaseElement<ExaminePeekMod
 
         // Convert the record to an array of entries, sort them by key, then iterate over them
         Object.entries(this.examineRecord?.values ?? {})
+            .sort(([a],[b]) => a.localeCompare(b))
             .forEach(([key, value]) => {
                 listItems.push(html`
                     <umb-property-layout label="${key}">                      
