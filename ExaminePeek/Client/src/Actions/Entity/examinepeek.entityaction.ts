@@ -20,7 +20,7 @@ export class ExaminePeekEntityAction extends UmbEntityActionBase<never> {
 
     async execute() {
         if (!this.args.unique) {
-            throw new Error('The document unique identifier is missing');
+            throw new Error("The document unique identifier is missing");
         }
 
         //The modal does NOT return any data when closed (it does not submit)
@@ -32,7 +32,7 @@ export class ExaminePeekEntityAction extends UmbEntityActionBase<never> {
 
         await modal?.onSubmit().catch((_rejected) => {
             // User clicked close/cancel and no data was submitted
-            console.log('rejected', _rejected)
+            console.log("rejected", _rejected)
             return;
         });
     }

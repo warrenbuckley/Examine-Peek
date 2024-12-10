@@ -1,6 +1,6 @@
 ﻿import { customElement, html, state } from "@umbraco-cms/backoffice/external/lit";
 import { UmbModalBaseElement, UmbModalRejectReason } from "@umbraco-cms/backoffice/modal";
-import { tryExecuteAndNotify } from '@umbraco-cms/backoffice/resources';
+import { tryExecuteAndNotify } from "@umbraco-cms/backoffice/resources";
 
 import { TemplateResult, css } from "lit";
 
@@ -8,7 +8,7 @@ import { ExaminePeekModalData, ExaminePeekModalValue } from "./examinepeek.modal
 import { ExaminePeekService, ISearchResult } from "../Api/index.ts";
 import { UUIButtonElement } from "@umbraco-cms/backoffice/external/uui";
 
-@customElement('examine-peek-modal')
+@customElement("examine-peek-modal")
 export class ExaminePeekmModalElement extends UmbModalBaseElement<ExaminePeekModalData, ExaminePeekModalValue>
 {
     constructor() {
@@ -99,7 +99,7 @@ export class ExaminePeekmModalElement extends UmbModalBaseElement<ExaminePeekMod
         });
         
         return html`
-            <umb-body-layout headline="${this.localize.term('examinepeek_modal-title')}">
+            <umb-body-layout headline="${this.localize.term("examinepeek_modal-title")}">
                 
                 <uui-box headline="Data">
                     ${listItems}
