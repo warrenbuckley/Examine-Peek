@@ -1,6 +1,6 @@
 ﻿import { customElement, html, state } from "@umbraco-cms/backoffice/external/lit";
 import { UmbModalBaseElement, UmbModalRejectReason } from "@umbraco-cms/backoffice/modal";
-import { tryExecuteAndNotify } from '@umbraco-cms/backoffice/resources';
+import { tryExecuteAndNotify } from "@umbraco-cms/backoffice/resources";
 
 import { TemplateResult, css } from "lit";
 
@@ -8,7 +8,7 @@ import { ExaminePeekModalData, ExaminePeekModalValue } from "./examinepeek.modal
 import { ExaminePeekService, ISearchResult } from "../Api/index.ts";
 import { UUIButtonElement } from "@umbraco-cms/backoffice/external/uui";
 
-@customElement('examine-peek-modal')
+@customElement("examine-peek-modal")
 export class ExaminePeekmModalElement extends UmbModalBaseElement<ExaminePeekModalData, ExaminePeekModalValue>
 {
     constructor() {
@@ -54,7 +54,7 @@ export class ExaminePeekmModalElement extends UmbModalBaseElement<ExaminePeekMod
     private async _copyValue(e: Event, textToCopy: string) {
         // the e.target may or may not be UUIButtonElement
         // it could be the nested uui-icon item
-        var target = e.target as HTMLElement; // Could be <uui-button> or <uui-icon> nested inside the button
+        const target = e.target as HTMLElement; // Could be <uui-button> or <uui-icon> nested inside the button
         let button: UUIButtonElement | undefined = undefined;
 
         if (target instanceof UUIButtonElement) {
@@ -79,7 +79,7 @@ export class ExaminePeekmModalElement extends UmbModalBaseElement<ExaminePeekMod
     
     render() {
 
-        let listItems: TemplateResult[] = [];
+        const listItems: TemplateResult[] = [];
 
         // Convert the record to an array of entries, sort them by key, then iterate over them
         Object.entries(this.examineRecord?.values ?? {})
@@ -99,7 +99,7 @@ export class ExaminePeekmModalElement extends UmbModalBaseElement<ExaminePeekMod
         });
         
         return html`
-            <umb-body-layout headline="${this.localize.term('examinepeek_modal-title')}">
+            <umb-body-layout headline="${this.localize.term("examinepeek_modal-title")}">
                 
                 <uui-box headline="Data">
                     ${listItems}

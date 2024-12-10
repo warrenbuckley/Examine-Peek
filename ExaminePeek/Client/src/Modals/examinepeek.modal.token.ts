@@ -6,7 +6,7 @@ export interface ExaminePeekModalData {
 export interface ExaminePeekModalValue {
 }
 
-export const EXAMINE_PEEK_MODAL = new UmbModalToken<ExaminePeekModalData, ExaminePeekModalValue>('examinepeek.modal', {
+export const EXAMINE_PEEK_MODAL = new UmbModalToken<ExaminePeekModalData, ExaminePeekModalValue>("examinepeek.modal", {
     modal: {
         type: "sidebar",
         size: "medium" // full, large, medium, small
