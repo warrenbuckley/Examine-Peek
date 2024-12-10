@@ -1,4 +1,3 @@
-
 export const manifests: Array<UmbExtensionManifest> = [
     {
         name: "Examine Peek - English (US)",

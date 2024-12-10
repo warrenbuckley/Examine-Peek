@@ -54,7 +54,7 @@ export class ExaminePeekmModalElement extends UmbModalBaseElement<ExaminePeekMod
     private async _copyValue(e: Event, textToCopy: string) {
         // the e.target may or may not be UUIButtonElement
         // it could be the nested uui-icon item
-        var target = e.target as HTMLElement; // Could be <uui-button> or <uui-icon> nested inside the button
+        const target = e.target as HTMLElement; // Could be <uui-button> or <uui-icon> nested inside the button
         let button: UUIButtonElement | undefined = undefined;
 
         if (target instanceof UUIButtonElement) {
@@ -79,7 +79,7 @@ export class ExaminePeekmModalElement extends UmbModalBaseElement<ExaminePeekMod
     
     render() {
 
-        let listItems: TemplateResult[] = [];
+        const listItems: TemplateResult[] = [];
 
         // Convert the record to an array of entries, sort them by key, then iterate over them
         Object.entries(this.examineRecord?.values ?? {})

@@ -3,7 +3,7 @@ import { UMB_AUTH_CONTEXT } from "@umbraco-cms/backoffice/auth";
 import { OpenAPI } from "../Api";
 
 // load up the manifests here
-export const onInit: UmbEntryPointOnInit = (host, _extensionRegistry) => {
+export const onInit: UmbEntryPointOnInit = (host) => {
 
   // Will use only to add in Open API config with generated TS OpenAPI HTTPS Client
   // Do the OAuth token handshake stuff
@@ -20,7 +20,7 @@ export const onInit: UmbEntryPointOnInit = (host, _extensionRegistry) => {
   });
 };
 
-export const onUnload: UmbEntryPointOnUnload = (_host, _extensionRegistry) => {
+export const onUnload: UmbEntryPointOnUnload = () => {
   console.log("Goodbye from Examine Peek👋");
 };
 
