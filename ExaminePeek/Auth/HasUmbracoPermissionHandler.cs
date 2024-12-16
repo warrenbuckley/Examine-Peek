@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Umbraco.Cms.Core;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 using Umbraco.Cms.Core.Security.Authorization;
 using Umbraco.Cms.Core.Services;
-using Umbraco.Extensions;
+using Umbraco.Cms.Core.Services.AuthorizationStatus;
 
 namespace ExaminePeek.Auth
 {
@@ -10,27 +11,50 @@ namespace ExaminePeek.Auth
 	{
 		private readonly IAuthorizationHelper _authorizationHelper;
 		private readonly IUserService _userService;
+		private readonly IHttpContextAccessor _httpContextAccessor;
+		private readonly IContentPermissionService _contentPermissionService;
 
-		public HasUmbracoPermissionHandler(IAuthorizationHelper authorizationHelper, IUserService userService)
+		public HasUmbracoPermissionHandler(IAuthorizationHelper authorizationHelper, IUserService userService, IHttpContextAccessor httpContextAccessor, IContentPermissionService contentPermissionService)
 		{
-			_authorizationHelper = authorizationHelper;
-			_userService = userService;
+			_authorizationHelper = authorizationHelper ?? throw new ArgumentNullException(nameof(authorizationHelper));
+			_userService = userService ?? throw new ArgumentNullException(nameof(userService));
+			_httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
+			_contentPermissionService = contentPermissionService ?? throw new ArgumentNullException(nameof(contentPermissionService));
 		}
-		
-		protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, HasUmbracoPermissionRequirement requirement)
-		{
-			var umbracoUser = _authorizationHelper.GetUmbracoUser(context.User);
-			var permissions = umbracoUser.GetPermissions(Constants.System.RootString, _userService);
-			var hasPermission = permissions.Contains(requirement.Permission);
 
-			if (hasPermission)
+		protected override async Task HandleRequirementAsync(AuthorizationHandlerContext context, HasUmbracoPermissionRequirement requirement)
+		{
+			if (context.User.Identity?.IsAuthenticated is false)
+			{
+				context.Fail();
+				return;
+			}
+				
+			var umbracoUser = _authorizationHelper.GetUmbracoUser(context.User);
+			var httpContext = _httpContextAccessor.HttpContext;
+			
+			var documentKey = httpContext?.GetRouteValue("key")?.ToString();
+			if (Guid.TryParse(documentKey, out var parsedKey))
+			{
+				var checkPermission =  await _contentPermissionService.AuthorizeAccessAsync(umbracoUser, parsedKey, requirement.Permission);
+				if (checkPermission == ContentAuthorizationStatus.Success)
+				{
+					context.Succeed(requirement);
+					return;
+				}
+				
+				context.Fail();
+				return;
+			}
+			
+			var checkRootPermission = await _contentPermissionService.AuthorizeRootAccessAsync(umbracoUser, requirement.Permission);
+			if (checkRootPermission == ContentAuthorizationStatus.Success)
 			{
 				context.Succeed(requirement);
-				return Task.CompletedTask;
+				return;
 			}
 			
 			context.Fail();
-			return Task.CompletedTask;
 		}
 	}
 }
