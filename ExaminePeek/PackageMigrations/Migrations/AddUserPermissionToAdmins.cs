@@ -54,7 +54,7 @@ namespace ExaminePeek.PackageMigrations.Migrations
 			// Update the user group
 			var attempt = _userGroupService.UpdateAsync(adminGroup, Constants.Security.SuperUserKey).Result;
 
-			_logger.LogTrace("Updated default Umbraco Admin User Group with the permissiona with this attempt status {status}", attempt.Status);
+			_logger.LogTrace("Updated default Umbraco Admin User Group with the permission, with this attempt status {status}", attempt.Status);
 
 			if (!attempt.Success)
 			{
