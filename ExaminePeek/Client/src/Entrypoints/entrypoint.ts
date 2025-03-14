@@ -1,6 +1,6 @@
 import { UmbEntryPointOnInit, UmbEntryPointOnUnload } from "@umbraco-cms/backoffice/extension-api";
 import { UMB_AUTH_CONTEXT } from "@umbraco-cms/backoffice/auth";
-import { OpenAPI } from "../Api";
+import { client } from "../api/client.gen";
 
 // load up the manifests here
 export const onInit: UmbEntryPointOnInit = (host) => {
@@ -12,10 +12,11 @@ export const onInit: UmbEntryPointOnInit = (host) => {
     // Get the token info from Umbraco
     const config = authContext.getOpenApiConfiguration();
 
-    OpenAPI.BASE = config.base;
-    OpenAPI.WITH_CREDENTIALS = config.withCredentials;
-    OpenAPI.CREDENTIALS = config.credentials;
-    OpenAPI.TOKEN = config.token;
+    client.setConfig({
+      baseUrl: config.base,
+      credentials: config.credentials,
+      auth: () => config.token(), // Dont need to use the interceptor approach anymore
+    });
 
   });
 };

@@ -5,7 +5,7 @@ import { tryExecuteAndNotify } from "@umbraco-cms/backoffice/resources";
 import { TemplateResult, css } from "lit";
 
 import { ExaminePeekModalData, ExaminePeekModalValue } from "./examinepeek.modal.token.ts";
-import { ExaminePeekService, ISearchResult } from "../Api/index.ts";
+import { ExaminePeekService, ISearchResult } from "../api/index.ts";
 import { UUIButtonElement } from "@umbraco-cms/backoffice/external/uui";
 
 @customElement("examine-peek-modal")
@@ -41,17 +41,21 @@ export class ExaminePeekmModalElement extends UmbModalBaseElement<ExaminePeekMod
     }
     
     private async _getExamineRecord(key: string) : Promise<ISearchResult | undefined> {
-        const { data, error } = await tryExecuteAndNotify(this, ExaminePeekService.getUmbracoExaminepeekApiV1RecordByKey({key: key}))
+        const { data, error } = await tryExecuteAndNotify(this, ExaminePeekService.getUmbracoExaminepeekApiV1RecordByKey({
+            path: {
+                key: key
+            }
+        }));
         if (error){
             console.error(error);
             return undefined;
         }
         
         this.hasLoadedRecord = true;
-        return data as ISearchResult;
+        return data?.data as ISearchResult;
     }
     
-    private async _copyValue(e: Event, textToCopy: string) {
+    private async _copyValue(e: Event, textToCopy: string | null) {
         // the e.target may or may not be UUIButtonElement
         // it could be the nested uui-icon item
         const target = e.target as HTMLElement; // Could be <uui-button> or <uui-icon> nested inside the button
@@ -63,9 +67,6 @@ export class ExaminePeekmModalElement extends UmbModalBaseElement<ExaminePeekMod
             button = target.parentElement;
         }
 
-        
-
-        //const text = this.textContent;
         const text = textToCopy;
 		if (text) {
 			await navigator.clipboard.writeText(text);
