@@ -7,21 +7,21 @@
         "build": "tsc && vite build",
         "watch": "vite build --watch",
         "generate-api": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 openapi-ts --input https://localhost:44365/umbraco/swagger/ExaminePeek/swagger.json --output src/Api",
-		"lint": "eslint",
-		"lint:fix": "eslint --fix"
-	},
+        "lint": "eslint",
+        "lint:fix": "eslint --fix"
+    },
     "dependencies": {
         "lit": "^3.1.4"
     },
     "devDependencies": {
-        "@eslint/js": "^9.16.0",
-        "@hey-api/openapi-ts": "^0.47.0",
-        "@umbraco-cms/backoffice": "^15.0.0",
+        "@eslint/js": "^9.22.0",
+        "@hey-api/openapi-ts": "^0.64.12",
+        "@umbraco-cms/backoffice": "^15.3.0-rc2",
         "cross-env": "^7.0.3",
-        "eslint": "^9.16.0",
-        "globals": "^15.13.0",
-        "typescript": "^5.4.5",
-        "typescript-eslint": "^8.18.0",
-        "vite": "^5.3.1"
+        "eslint": "^9.22.0",
+        "globals": "^16.0.0",
+        "typescript": "^5.8.2",
+        "typescript-eslint": "^8.26.1",
+        "vite": "^6.2.2"
     }
 }
