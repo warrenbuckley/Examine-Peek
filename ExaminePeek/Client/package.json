@@ -10,20 +10,17 @@
         "lint": "eslint",
         "lint:fix": "eslint --fix"
     },
-    "dependencies": {
-        "lit": "^3.1.4"
-    },
     "devDependencies": {
-        "@eslint/js": "^9.22.0",
-        "@hey-api/client-fetch": "^0.8.3",
-        "@hey-api/openapi-ts": "^0.64.12",
-        "@umbraco-cms/backoffice": "^15.3.0-rc2",
-        "cross-env": "^7.0.3",
-        "eslint": "^9.22.0",
-        "globals": "^16.0.0",
+        "@eslint/js": "^9.38.0",
+        "@hey-api/openapi-ts": "^0.86.8",
+        "@umbraco-cms/backoffice": "^15.3.1",
+        "cross-env": "^10.1.0",
+        "eslint": "^9.38.0",
+        "globals": "^16.4.0",
+        "lit": "^3.3.1",
         "node-fetch": "^3.3.2",
-        "typescript": "^5.8.2",
-        "typescript-eslint": "^8.26.1",
-        "vite": "^6.2.3"
+        "typescript": "^5.9.3",
+        "typescript-eslint": "^8.46.2",
+        "vite": "^7.1.12"
     }
 }
