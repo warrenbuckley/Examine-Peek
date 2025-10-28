@@ -9,7 +9,7 @@
           "name": "Examine Peek - Bundle",
           "alias": "examinepeek.bundle",
           "type": "bundle",
-          "js": "/app_plugins/ExaminePeek/examine-peek.js"
+          "js": "/App_Plugins/ExaminePeek/examine-peek.js"
         }
       ]
 }
