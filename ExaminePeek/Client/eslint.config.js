@@ -9,6 +9,10 @@ export default [
   { ignores: ["src/Api/*"] },
   { languageOptions: { globals: globals.browser } },
   {
+    files: ["scripts/**/*.js"],
+    languageOptions: { globals: globals.node }
+  },
+  {
     rules:
     {
       "@typescript-eslint/no-empty-object-type": [
