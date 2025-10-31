@@ -1,6 +1,5 @@
 ﻿import { customElement, html, state } from "@umbraco-cms/backoffice/external/lit";
 import { UmbModalBaseElement, UmbModalRejectReason } from "@umbraco-cms/backoffice/modal";
-import { tryExecuteAndNotify } from "@umbraco-cms/backoffice/resources";
 
 import { TemplateResult, css } from "lit";
 
@@ -41,18 +40,18 @@ export class ExaminePeekmModalElement extends UmbModalBaseElement<ExaminePeekMod
     }
     
     private async _getExamineRecord(key: string) : Promise<ISearchResult | undefined> {
-        const { data, error } = await tryExecuteAndNotify(this, ExaminePeekService.getUmbracoExaminepeekApiV1RecordByKey({
+        const { data, error } = await ExaminePeekService.getUmbracoExaminepeekApiV1RecordByKey({
             path: {
                 key: key
             }
-        }));
+        });
         if (error){
             console.error(error);
             return undefined;
         }
         
         this.hasLoadedRecord = true;
-        return data?.data as ISearchResult;
+        return data as ISearchResult;
     }
     
     private async _copyValue(e: Event, textToCopy: string | null) {
@@ -79,7 +78,6 @@ export class ExaminePeekmModalElement extends UmbModalBaseElement<ExaminePeekMod
     };
     
     render() {
-
         const listItems: TemplateResult[] = [];
 
         // Convert the record to an array of entries, sort them by key, then iterate over them

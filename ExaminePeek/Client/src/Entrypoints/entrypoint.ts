@@ -22,6 +22,5 @@ export const onInit: UmbEntryPointOnInit = (host) => {
 };
 
 export const onUnload: UmbEntryPointOnUnload = () => {
-  console.log("Goodbye from Examine Peek👋");
 };
 
