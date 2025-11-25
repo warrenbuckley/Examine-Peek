@@ -9,6 +9,9 @@ export const manifests: Array<UmbExtensionManifest> = [
                 "examinepeek": {
                     "modal-title": "Examine Peek",
                     "entity-action": "Examine Peek"
+                },
+                "actionCategories": {
+                    "examinePeek": "Examine Peek"
                 }
             }
         }

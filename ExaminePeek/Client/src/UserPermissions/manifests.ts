@@ -9,7 +9,7 @@ export const manifests: Array<UmbExtensionManifest> = [
         weight: -1000,
         meta: {
             verbs: ["ExaminePeek.Enabled"], // This is key persisted back to server & what we look up in our condition
-            group: "Examine Peek",
+            group: "examinePeek", // This then turns into a localization key #actionCategories_examinePeek
             label: "Enable Examine Peek",
             description: "Allows a user to peek at the stored Examine values in the index for a given piece of content."
         }
