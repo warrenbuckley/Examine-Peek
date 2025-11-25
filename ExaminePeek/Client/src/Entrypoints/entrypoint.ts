@@ -10,12 +10,12 @@ export const onInit: UmbEntryPointOnInit = (host) => {
   host.consumeContext(UMB_AUTH_CONTEXT, async (authContext) => {
 
     // Get the token info from Umbraco
-    const config = authContext.getOpenApiConfiguration();
+    const config = authContext?.getOpenApiConfiguration();
 
     client.setConfig({
-      baseUrl: config.base,
-      credentials: config.credentials,
-      auth: () => config.token(), // Dont need to use the interceptor approach anymore
+      baseUrl: config?.base,
+      credentials: config?.credentials,
+      auth: () => config?.token(), // Dont need to use the interceptor approach anymore
     });
 
   });
