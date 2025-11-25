@@ -2,7 +2,7 @@
 using ExaminePeek.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 using OpenIddict.Validation.AspNetCore;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
