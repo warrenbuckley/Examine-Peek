@@ -21,7 +21,6 @@ export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends 
 export class ExaminePeekService {
     /**
      * Test API call to ensure API routing etc is setup correctly
-     *
      * Sample request:
      *
      * GET /umbraco/api/examinepeek/v1/ping
@@ -41,7 +40,6 @@ export class ExaminePeekService {
     
     /**
      * Show the stored data in Examine for a given content node based on its key
-     *
      * Sample request:
      *
      * GET /umbraco/api/examinepeek/v1/record/7222e75b-9396-4cc9-bedb-149ca12c846d
