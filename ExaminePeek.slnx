@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="build.ps1" />
+  </Folder>
+  <Project Path="ExaminePeek.Website/ExaminePeek.Website.csproj" />
+  <Project Path="ExaminePeek/ExaminePeek.csproj" />
+</Solution>
