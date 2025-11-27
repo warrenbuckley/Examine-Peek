@@ -61,7 +61,7 @@
 		</None>
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Include="Umbraco.Cms.Api.Management" Version="17.0.0-rc4" />
+	  <PackageReference Include="Umbraco.Cms.Api.Management" Version="17.0.0" />
 	</ItemGroup>
 
 </Project>
