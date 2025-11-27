@@ -2,7 +2,7 @@
 $projectFile = "./ExaminePeek/ExaminePeek.csproj"
 $configuration = "Release"
 $outputDirectory = "./build.out"
-$version = "1.1.1"
+$version = "17.0.0"
 
 ## Perhaps need to do a build of the client after updating the version in the source file
 #$packageJsonPath = "./ExaminePeek/client/public/umbraco-package.json" 
