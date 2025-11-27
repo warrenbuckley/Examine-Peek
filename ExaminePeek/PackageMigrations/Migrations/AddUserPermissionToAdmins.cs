@@ -11,7 +11,7 @@ using Umbraco.Cms.Infrastructure.Packaging;
 
 namespace ExaminePeek.PackageMigrations.Migrations
 {
-	public class AddUserPermissionToAdmins : PackageMigrationBase
+	public class AddUserPermissionToAdmins : AsyncPackageMigrationBase
 	{
 		private readonly IUserGroupService _userGroupService;
 		private readonly IUserService _userService;
@@ -35,14 +35,14 @@ namespace ExaminePeek.PackageMigrations.Migrations
 			_logger = logger;
 		}
 
-		protected override void Migrate()
+		protected override Task MigrateAsync()
 		{
 			var adminGroup = _userGroupService.GetAsync(Constants.Security.AdminGroupKey).Result;
 
 			if (adminGroup == null)
 			{
 				_logger.LogWarning("Examine Peek is unable to find the default Umbraco Admin User Group. Exiting");
-				return;
+				return Task.CompletedTask;
 			}
 
 			// Permissions ?!
@@ -61,6 +61,8 @@ namespace ExaminePeek.PackageMigrations.Migrations
 				_logger.LogWarning("ExaminePeek was unable to update the default Umbraco Admin User Group with permission");
 				_logger.LogError(attempt.Exception, "Error updating the User Group permission");
 			}
+
+			return Task.CompletedTask;
 		}
 	}
 }
